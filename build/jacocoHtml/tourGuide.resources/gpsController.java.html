@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>gpsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ms_gps</a> &gt; <a href="index.source.html" class="el_package">tourGuide.resources</a> &gt; <span class="el_source">gpsController.java</span></div><h1>gpsController.java</h1><pre class="source lang-java linenums">package tourGuide.resources;
+
+import gpsUtil.location.Attraction;
+import gpsUtil.location.Location;
+import gpsUtil.location.VisitedLocation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import tourGuide.service.gpsUtilService;
+
+import java.util.List;
+
+@RestController
+<span class="nc" id="L16">public class gpsController {</span>
+
+    @Autowired
+    gpsUtilService gpsUtilService;
+
+    @GetMapping(&quot;/getAttractions&quot;)
+    public List&lt;Attraction&gt; getAttractions() {
+<span class="nc" id="L23">        return gpsUtilService.getAttractions();</span>
+    }
+
+    @GetMapping(&quot;/getVisitedLocation/{id}&quot;)
+    public VisitedLocation getVisitedLocation(@PathVariable String id) {
+<span class="nc" id="L28">        return gpsUtilService.getVisitedLocation(id);</span>
+    }
+
+    @GetMapping(&quot;/getDistance&quot;)
+    public double getDistance(@RequestParam double lat1, @RequestParam double long1,
+                        @RequestParam double lat2, @RequestParam double long2) {
+<span class="nc" id="L34">        Location loc1 = new Location(lat1, long1);</span>
+<span class="nc" id="L35">        Location loc2 = new Location(lat2, long2);</span>
+<span class="nc" id="L36">        return gpsUtilService.getDistance(loc1, loc2);</span>
+    }
+
+    @GetMapping(&quot;/near&quot;)
+    public boolean near(@RequestParam double lat1, @RequestParam double long1,
+                                  @RequestParam double lat2, @RequestParam double long2) {
+<span class="nc" id="L42">        Location loc1 = new Location(lat1, long1);</span>
+<span class="nc" id="L43">        Location loc2 = new Location(lat2, long2);</span>
+<span class="nc" id="L44">        return gpsUtilService.near(loc1, loc2);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
