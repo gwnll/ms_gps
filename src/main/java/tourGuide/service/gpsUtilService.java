@@ -24,6 +24,10 @@ public class gpsUtilService {
         this.gpsUtil = gpsUtil;
     }
 
+    public void setProximityBuffer(int proximityBuffer) {
+        this.proximityBuffer = proximityBuffer;
+    }
+
     public List<Attraction> getAttractions() {
         return gpsUtil.getAttractions();
     }
@@ -32,7 +36,7 @@ public class gpsUtilService {
         return gpsUtil.getUserLocation(UUID.fromString(userID));
     }
 
-    public boolean near(Location loc1, Location loc2) {
+    public boolean near(Location loc1, Location loc2, int proximityBuffer) {
         return getDistance(loc1, loc2) > proximityBuffer ? false : true;
     }
 

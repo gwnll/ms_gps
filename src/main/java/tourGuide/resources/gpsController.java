@@ -18,6 +18,11 @@ public class gpsController {
     @Autowired
     gpsUtilService gpsUtilService;
 
+    @GetMapping("/setProximityBuffer/{buffer}")
+    public void setProximityBuffer(@PathVariable int buffer) {
+        gpsUtilService.setProximityBuffer(buffer);
+    }
+
     @GetMapping("/getAttractions")
     public List<Attraction> getAttractions() {
         return gpsUtilService.getAttractions();
@@ -38,10 +43,11 @@ public class gpsController {
 
     @GetMapping("/near")
     public boolean near(@RequestParam double lat1, @RequestParam double long1,
-                                  @RequestParam double lat2, @RequestParam double long2) {
+                        @RequestParam double lat2, @RequestParam double long2,
+                        @RequestParam int proximityBuffer) {
         Location loc1 = new Location(lat1, long1);
         Location loc2 = new Location(lat2, long2);
-        return gpsUtilService.near(loc1, loc2);
+        return gpsUtilService.near(loc1, loc2, proximityBuffer);
     }
 
 }
