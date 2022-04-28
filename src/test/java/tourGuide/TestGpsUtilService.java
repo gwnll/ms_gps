@@ -3,6 +3,7 @@ package tourGuide;
 import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import tourGuide.service.gpsUtilService;
 
@@ -10,7 +11,7 @@ import java.util.Locale;
 
 import static org.junit.Assert.assertTrue;
 
-public class TestRewardsService {
+public class TestGpsUtilService {
 
     @Before
     public void setLocale() {
@@ -22,7 +23,7 @@ public class TestRewardsService {
         GpsUtil gpsUtil = new GpsUtil();
         gpsUtilService gpsUtilService = new gpsUtilService(gpsUtil);
         Attraction attraction = gpsUtil.getAttractions().get(0);
-        assertTrue(gpsUtilService.near(attraction, attraction));
+        assertTrue(gpsUtilService.near(attraction, attraction, 10));
     }
 
 }
