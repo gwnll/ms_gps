@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TestRewardsService" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-11T14:08:02" hostname="DESKTOP-KFLCEBU" time="0.068">
-  <properties/>
-  <testcase name="isWithinAttractionProximity" classname="tourGuide.TestRewardsService" time="0.068"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
